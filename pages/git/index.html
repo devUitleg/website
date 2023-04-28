@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wat is Git?</title>
+    <script defer src="./../../assets/js/util.js"></script>
+    <link rel="stylesheet" href="./../../assets/css/styles.css">
+    <link rel="icon" href="../../assets/images/devuitlegLogo.png" type="image/x-icon">
+    <script>
+        const authors = "Anthony Aichouche";
+    </script>
+</head>
+
+<body id="top">
+    <div class="nav">
+        <nav class="text-[#ffffff] z-50 w-full">
+            <div style="display: flex; gap: 15px; align-items: center; padding: 10px 0;">
+                <a href="../../index.html" style="display: flex; gap: 10px;">
+                    <img src="../../assets/images/devuitlegLogo.png" alt="logo" style="height:35px;">
+                    <h1 class="text-2xl font-bold pl-2 ">DevUitleg ></h1>
+                </a>
+                <a class="ml-16 flex items-center leading-9" href="#">
+                    Wat is Git?
+                </a>
+            </div>
+
+        </nav>
+        <div class="progress">
+        </div>
+    </div>
+
+    <header class="headerCursus bg-gradient-to-r from-fuchsia-600 to-pink-600">
+        <img class="backdrop-blur-sm" src="./../../assets/images/git(hub)vraag.png" alt="githubVraag">
+        <p class="lastUpdate">
+            <b>Last update:</b> <span data-git-info="date-git-info"></span>
+        </p>
+        <p class="authors">
+            <b>Author(s):</b>
+            <script>
+                document.write(authors);
+            </script>
+        </p>
+    </header>
+
+    <main id="main" class="my-16">
+        <h1 hoofdstuk="I." class="Maintitle">Wat is Git ?</h1>
+        <p class="titelUitleg">
+            <!-- wat is git -->
+            Ah, dus jij bent klaar om jezelf te storten in de wondere wereld van de informatica!<br>
+            Dan zul je snel genoeg merken
+            dat er een hoop gebabbel wordt over <b>"Git"</b>. <br>
+            Maar wat is dat eigenlijk? In dit eerste deel ga ik je
+            voorstellen
+            aan dit
+            mysterieuze programma. Wat is het? Wat doet het? En waarom zou je het überhaupt gebruiken?<br>
+            Na dit deel zul
+            je eindelijk
+            wat antwoorden hebben op deze brandende vragen. En wie weet, misschien word je wel zo'n Git-fanaat dat je
+            alleen nog
+            maar over commit en push praat bij het avondeten.
+        </p>
+        <article>
+            <h2>Versiebeheersysteem</h2>
+            <p>
+                Git is eigenlijk gewoon een handig hulpje ie je kunt gebruiken om verschillende versies van je code op
+                te slaan. Als je
+                bijvoorbeeld een fout maakt in je code, kan je altijd teruggaan naar een vorige versie en verder werken
+                vanaf een punt
+                waar alles nog goed werkte. Al deze versies worden opgeslagen in een database of
+                <b>versiebeheersysteem</b>, dus je hoeft je geen
+                zorgen te maken over
+                het kwijtraken van je werk. Dit is vooral handig als je je code op het internet opslaat, zoals op
+                GitHub. Daar gaan we
+                later nog meer over vertellen. Maar voor nu hoef je alleen maar te onthouden dat Git ervoor zorgt dat je
+                altijd een
+                back-up hebt van de vorige versie van je werk, zodat je nooit helemaal opnieuw hoeft te beginnen als er
+                iets
+                misgaat.
+            </p>
+            <h2>
+                Linus Torvalds
+            </h2>
+            <p>
+                Weet je wie Git heeft uitgevonden? Dat was Linus Torvalds! <br>
+                Hij had een versiebeheersysteem nodig voor de
+                ontwikkeling
+                van de <b>Linux kernel</b>, dus besloot hij er gewoon zelf een te maken. En zo werd Git geboren! Dus
+                eigenlijk
+                hebben we aan
+                Linus te danken dat we nu zo makkelijk verschillende versies van onze code kunnen bijhouden.
+            </p>
+        </article>
+        <article>
+            <h2>Wat is GitHub?</h2>
+            <p>
+                GitHub is een plaats waar je online alle Git <abbr class="info"
+                    uitleg="
+                    Een repository (repo) is een map waarin je alle bestanden van je project opslaat.">repositories</abbr> kunt
+                opslaan. Voordeel daarvan
+                is dat je online altijd je code kan terugvinden.
+                <br>
+                Dat kan handig zijn als je bijvoorbeeld op je werk begint aan een project, en je wilt thuis met een
+                andere computer verder
+                werken.
+            </p>
+            </p>
+            Een ander voordeel is dat je hiermee kunt samenwerken met anderen. Iedereen (van jouw
+            team)
+            kan
+            code
+            aannpassen en/of
+            toevoegen aan je projectje.
+            </p>
+            </section>
+            <div class="btn_flex">
+                <a href="./../../index.html">
+                    <button id="btn_back">
+                        <p class="content">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block pijltje " fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                            Alle cursussen
+                        </p>
+                    </button>
+                </a>
+                <a href="./gitCommands.html">
+                    <button class="btn">
+                        <p>
+                            II. Git commands
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block pijltje " fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </p>
+                    </button>
+                </a>
+            </div>
+    </main>
+    <footer>
+        <div>
+            <div> Made with ❤️ by
+                <a href="https://anthonyaichouche.be" target="_blank">Anthony Aichouche</a>
+                &middot;
+                <a href="mailto:anthony.aichouche@gmail.com">e-mail</a>
+            </div>
+            <div>Licensed under the <a target="_blank"
+                    href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 3.0 license</a>.
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top">
+        <div class="scrollToTop">
+            <p id="percentage__progress">
+                0%
+            </p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+            </svg>
+        </div>
+    </a>
+</body>
+
+</html>

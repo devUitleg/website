@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wat is Git?</title>
+    <script defer src="./../../assets/js/util.js"></script>
+    <link rel="stylesheet" href="./../../assets/css/styles.css">
+    <link rel="icon" href="./../../assets/images/devuitlegLogo.png" type="image/x-icon">
+    <script>
+        const authors = "Anthony Aichouche";
+    </script>
+</head>
+
+<body id="top" class="courseTextPage">
+    <div class="nav">
+        <nav class="text-[#ffffff] z-50 w-full">
+            <div style="display: flex; gap: 15px; align-items: center; padding: 10px 0;">
+                <a href="../../index.html" style="display: flex; gap: 10px;">
+                    <img src="../../assets/images/devuitlegLogo.png" alt="logo" style="height:35px;">
+                    <h1 class="text-2xl font-bold pl-2 ">DevUitleg ></h1>
+                </a>
+                <a class="ml-16 flex items-center leading-9" href="#">
+                    Git commands
+                </a>
+            </div>
+
+        </nav>
+        <div class="progress">
+        </div>
+    </div>
+
+    <header class="headerCursus bg-gradient-to-r from-fuchsia-600 to-pink-600">
+        <img class="backdrop-blur-sm" src="./../../assets/images/git(hub)vraag.png" alt="githubVraag">
+        <p class="lastUpdate">
+            <b>Last update:</b> <span data-git-info="date-git-info"></span>
+        </p>
+        <p class="authors">
+            <b>Author:</b>
+            <script>
+                document.write(authors);
+            </script>
+        </p>
+    </header>
+
+    <main id="commands">
+        <h1 hoofdstuk="II." class="Maintitle">Git commands</h1>
+        <p class="titelUitleg">
+            <!-- wat is git commands -->
+            Dus, je wilt met Git spelen? Dan zul je een beetje moeten leren hoe je de terminal gebruikt. Geen paniek,
+            het is niet zo
+            erg als het klinkt, je hoeft geen geavanceerde ninja te zijn om de commando's te begrijpen. We gaan samen de
+            meest
+            gebruikte commando's leren en zien hoe we ze kunnen gebruiken.
+        </p>
+        <section id="terminal">
+            <h2 class="secondTitle">Git terminal configureren.</h2>
+            <!-- <img style="height: 300px;" src="./../../assets/memes/powerAc.png" alt="terminal"> -->
+            <p>
+                Om Git en GitHub ten volste te kunnen gebruiken, moet Git ook eerst weten wie je bent.
+                Laten we beginnen en de <b>terminal</b> open te doen.</p>
+            <code class="bash">
+                    git config --global user.name "Jouw naam"
+                </code>
+            <code class="bash">
+                    git config --global user.email "Jouw email"
+                </code>
+            <h2 class="secondTitle">Maak een github accoun aan.</h2>
+            <a href="https://www.github.com">https://www.github.com</a>
+        </section>
+
+        <section id="actions">
+            <h2>Nu kunnen we echt beginnen met Git(Hub)!</h2>
+            <!-- ! git clone -->
+            <h3>$ git clone</h3>
+            <section class="uitleg">
+                <p>
+                    Git clone is een commando die een specifieke online <abbr class="info"
+                        uitleg="
+                        Een repository (repo) is een map waarin je alle bestanden van je project opslaat.">repository</abbr>
+                    importeerd naar de map
+                    waarin je staat.
+                    Het is eigenlijk hetzelfde als het downloaden van een repository.
+                </p>
+                <p><b>Voorbeeld:</b>
+                    <code class="bash">
+                            git clone git@github.com:AnthonyAich/TestRepo.git
+                        </code>
+                </p>
+                <p>Je ziet dat er nu een nieuwe map gedownload werd. Hierin zitten alle bestanden van de repository.</p>
+                <p class="vraag"> Euhm en wat zijn die <b>.gitignore</b> en <b>README.md</b> files daarbij?</p>
+                <article class="littleInfo">
+                    <h3>.gitignore</h3>
+                    <p>
+                        In de map zit ook een bestand genaamd <b>.gitignore</b>. Dit is een bestand waarin je kan
+                        <b>
+                            aangeven
+                            welke bestanden je niet wilt opslaan in je repository.
+                        </b>
+                        <br>
+                        Dit is handig als je bv. een bestand hebt met wachtwoorden, of een bestand met een API key nodig
+                        hebt.
+                    </p>
+                </article>
+                <article class="littleInfo">
+                    <h3>README.md</h3>
+                    <p>
+                        In de map zit ook een bestand genaamd <b>README.md</b>. Dit is een bestand waarin je kan
+                        aangeven
+                        wat de repository is, en wat er in zit.
+                        <br>
+                        Dit is zeker handig als je een repository deelt met anderen, zodat ze weten wat de bedoeling is
+                        van je projectje.
+                    </p>
+                </article>
+            </section>
+            <h1></h1>
+            <!-- ! git add -->
+            <h3 id="add">$ git add</h3>
+            <section class="uitleg">
+                <p>
+                    Git add is een commando die zegt dat je bestanden <b>wilt <a href="#commit">commiten</a></b>.
+                    Als je dit doet
+                    gaan je nieuwe/
+                    aangepaste bestanden van unstaged, naar staged.
+                    <br>
+                    Dit doet in praktijk niet zo heel veel, je verteld Git gewoon dat je die code in de toekomst wilt
+                    opslaan.
+                </p>
+                <p>
+                    <b>Voorbeeld voor adden:</b>
+                    <code class="bash">
+                            git add .
+                        </code>
+                </p>
+                <p class="weetje">
+                    <b>Weetje:</b> Het punt (.) na <b>git add</b> staat voor "alles", je kunt dit vervangen door een
+                    specifieke bestandsnaam.
+                </p>
+                <p>
+                    <b>Voorbeeld voor adden van een specifiek bestand:</b>
+                    <code class="bash">
+                            git add index.html
+                        </code>
+                </p>
+            </section>
+            <h1></h1>
+            <!-- ! git commit -->
+            <h3 id="commit">$ git commit</h3>
+            <section class="uitleg">
+                <p>
+                    Met het commando <b>Git commit</b> geef je nu aan dat de daarnet "<a href="#add">added</a>"
+                    bestanden
+                    kunnen
+                    <b>opgeslaan worden</b>.
+                    Hier geef je ook altijd een <b>uitleg van wat er net verranderd is</b>.
+                    <br />
+                    Dus als je dit doet gaan je staged bestanden van staged, naar committed.
+                </p>
+                <p>
+                    <b>Voorbeeld voor commiten:</b>
+                    <code class="bash">
+                            git commit -m <span style="color: #6da3e2 ;">"Nieuwe footer bij index.html"</span>
+                        </code>
+                </p>
+                <p class="weetje">
+                    <b>Weetje:</b> De <b>-m</b> staat voor "message".
+                </p>
+            </section>
+            <h1></h1>
+            <!-- ! git push -->
+            <h3>$ git push</h3>
+            <section class="uitleg">
+                <p>
+                    Met het commando <b>Git push</b> geef je aan dat je de daarnet "<a href="#commit">committed</a>"
+                    bestanden
+                    wilt
+                    <b>uploaden</b> naar de <b>online repository (bv: op GitHub)</b>.
+                    <br />
+                    Dus als je dit doet gaan je committed bestanden van committed, naar pushed.
+                </p>
+                <p>
+                    <b>Voorbeeld voor pushen:</b>
+                    <code class="bash">
+                            git push
+                        </code>
+                </p>
+            </section>
+            <h1></h1>
+            <h1 id="branches">Branches</h1>
+            <div class="imgRight">
+                <div>
+                    <p>
+                        Een branch is een soort van aparte map, waarin je kan werken zonder dat het invloed
+                        heeft op de
+                        hoofdmap.
+                        <br>
+                        Je kan dus bv. een nieuwe feature maken, zonder dat het invloed heeft op de
+                        hoofdmap.
+                    </p>
+                </div>
+                <img style="height: 300px;" src="./../../assets/memes/branch_meme.jpg" alt="meme branches">
+            </div>
+            <!-- ! git checkout -->
+            <h3>$ git checkout</h3>
+            <section class="uitleg">
+                <p>
+                    Met het commando <b>Git checkout</b> ga je naar een andere <b>branch</b>.
+                    <br />
+                    Een branch is een soort van <b>versie</b> van je project.
+                    <br />
+                    Je kunt bv. een branch maken voor een nieuwe feature, en als je die feature af hebt kun je die
+                    branch
+                    samenvoegen met de <b>main branch</b>.
+                </p>
+                <p>
+                    <b>Voorbeeld voor checkouten:</b>
+                    <code class="bash">
+                            git checkout <span style="color: #6da3e2;">"feature"</span>
+                        </code>
+                </p>
+                <p class="weetje">
+                    <b>Weetje:</b> Als je een <b>nieuwe</b> branch maakt, en je wilt die branch pushen naar GitHub, dan
+                    moet je eerst
+                    <br>&nbsp;&nbsp;&nbsp;
+                    <b>git push --set-upstream origin <span style="color: #6da3e2 ;">"feature"</span></b>
+                    doen.
+                </p>
+            </section>
+            <h1></h1>
+            <!-- ! git merge -->
+            <h3>$ git merge</h3>
+            <section class="uitleg">
+                <p>
+                    Met het commando <b>Git merge</b> kun je twee branches samenvoegen.
+                    <br />
+                    Je kunt bv. een branch maken voor een nieuwe feature, en als je die feature af hebt kun je die
+                    branch
+                    samenvoegen met de <b>main branch</b>.
+                </p>
+                <h3 style="
+                    color: #000;
+                    ">
+                    Hoe doe ik dat?
+                </h3>
+                <p>
+                    <b>Stap 1:</b> Ga naar de branch waar je de andere branch in wilt samenvoegen.
+                    <br>
+                    <b>Stap 2:</b> Voer het commando <b><a href="#pull">git pull</a></b> uit.
+                    <br>
+                    <b>Stap 3:</b> Voer het commando <b>git merge "feature"</b> uit.
+                    <br>
+                    <b>Stap 4:</b> Voer het commando <b>git push</b> uit.
+                </p>
+                <h3 style=" color: #000; ">Voorbeeld voor mergen:</h3>
+                <p>
+                    Je hebt feature "footerToevoegen" gemaakt, en je wilt die nu samenvoegen met de main branch.
+                </p>
+                <p>
+                    S1: Ga naar de main branch:
+                    <code class="bash">
+                            git checkout <span style="color: #6da3e2;">main</span>
+                        </code>
+                </p>
+                <p>
+                    S2: De laatste versie van main importeren:
+                    <code class="bash">
+                            git pull
+                        </code>
+                </p>
+                <p>
+                    S3: Main en footerToevoegen samenvoegen:
+                    <code class="bash">
+                            git merge <span style="color: #6da3e2;">"footerToevoegen"</span>
+                        </code>
+                </p>
+                <p>
+                    S4: De samengevoegde versie van main uploaden naar GitHub:
+                    <code class="bash">
+                            git push
+                        </code>
+                </p>
+                <h2 style="color: crimson;border-bottom:none;">🎉 Je bent klaar! 🎉</h2>
+            </section>
+            <a href="./">
+                <button id="btn_back">
+                    <p class="content">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block pijltje " fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                        I. Wat is git?
+                    </p>
+                </button>
+            </a>
+    </main>
+    <footer>
+        <div>
+            <div> Made with ❤️ by
+                <a href="https://anthonyaichouche.be" target="_blank">Anthony Aichouche</a>
+                &middot;
+                <a href="mailto:anthony.aichouche@gmail.com">e-mail</a>
+            </div>
+            <div>Licensed under the <a target="_blank"
+                    href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 3.0 license</a>.
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top">
+        <div class="scrollToTop">
+            <p id="percentage__progress">
+                0%
+            </p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+            </svg>
+        </div>
+    </a>
+</body>
+
+</html>

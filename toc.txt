@@ -1,0 +1,21 @@
+GIT
+
+Wat is git?
+Wat is github?
+
+(saai gedeelte waar je door moet)
+git opzetten
+
+Hoe beginnen (gemakkelijke versie) ?
+	- clone
+	- add .
+	- commit -m
+	- push
+Branches?
+
+wat na branches?
+	- merge
+	- delete branch
+
+EXTRA
+Github pages

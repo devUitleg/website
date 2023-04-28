@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        PHP connectie met een database (Mysql) | DevUitleg
+    </title>
+    <script defer src="./../../assets/js/util.js"></script>
+    <link rel="stylesheet" href="./../../assets/css/styles.css">
+    <link rel="icon" href="../../assets/images/devuitlegLogo.png" type="image/x-icon">
+    <script>
+        const authors = "Anthony Aichouche";
+    </script>
+    <link rel="stylesheet" href="../../assets/css/githubdark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/languages/go.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@darkreader/darkreader"></script>
+    <script>hljs.highlightAll();</script>
+    <!-- change the theme to github dark -->
+    <script>
+
+
+    </script>
+
+</head>
+
+<body id="top">
+    <div class="nav">
+        <nav class="text-[#ffffff] z-50 w-full">
+            <div style="display: flex; gap: 15px; align-items: center; padding: 10px 0;">
+                <a href="../../index.html" style="display: flex; gap: 10px;">
+                    <img src="../../assets/images/devuitlegLogo.png" alt="logo" style="height:35px;">
+                    <h1 class="text-2xl font-bold pl-2 ">DevUitleg ></h1>
+                </a>
+                <a class="ml-16 flex items-center leading-9" href="#">
+                    PHP connectie met een database (Mysql)
+                </a>
+            </div>
+
+        </nav>
+        <div class="progress">
+        </div>
+    </div>
+
+    <header class="headerCursus bg-gradient-to-r from-fuchsia-600 to-pink-600">
+        <img class="backdrop-blur-sm" src="./../../assets/images/phpMysqlVraag.png" alt="githubVraag">
+        <p class="lastUpdate">
+            <b>Last update:</b> <span data-git-info="date-git-info"></span>
+        </p>
+        <p class="authors">
+            <b>Author(s):</b>
+            <script>
+                document.write(authors);
+            </script>
+        </p>
+    </header>
+
+    <main id="main" class="my-16">
+        <h1 hoofdstuk="I." class="Maintitle">PHP connecteren met een databank (Mysql)</h1>
+        <p class="titelUitleg">
+            Proficiat je hebt je eerste webpagina gemaakt! <br>
+            Natuurlijk is het leuk om een pagina te maken, maar je wilt iets verder gaan dan gewoon tekst op je
+            pagina zetten. <br>
+            Je wilt bijvoorbeeld een blog waar je een titel en een bericht kan toevoegen, een sociale media website
+            waar je je gegevens kan toevoegen, een webshop waar je producten kan toevoegen, enzovoort.
+            <br>
+            Om dit te kunnen doen moet je eerst een databank maken, en vervolgens een connectie maken met je website
+            (hier is dat dus een myqsl databank en een php website).
+
+        </p>
+        <article>
+            <h2>
+                Nieuwe databank maken
+            </h2>
+            <p>
+                Ik ga ervan uit dat je al een basisnotie hebt van SQL.
+            </p>
+            <br>
+            <p>
+                Ga naar jouw databank management systeem (bijvoorbeeld <a href="http://localhost/phpmyadmin"
+                    target="_blank">phpmyadmin</a>
+                ) en maak een nieuwe databank aan.
+            </p>
+            <pre>
+                <code
+                class="language-sql">CREATE DATABASE my_database;</code>
+            </pre>
+
+            <p>
+                Maak nu een tabel aan in je databank. (hier is de tabelnaam "users")
+            </p>
+            <pre>
+                <code
+                class="language-sql">CREATE TABLE users (
+
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(50),
+    email VARCHAR(50),
+    password VARCHAR(255)
+
+);</code>
+</pre>
+            <br>
+            <p>
+                Steek zelf wat data in je tabel, je zou nu iets moeten hebben die er zo uitziet:
+            </p>
+
+            <table>
+
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>password</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Anthony</td>
+                    <td>anthony.aichouche@gmail.com</td>
+                    <td>MijnMooiWachtwoord123</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>John</td>
+                    <td>john.doe@example.com</td>
+                    <td>JohnDoe123</td>
+                </tr>
+            </table>
+            <br>
+            <p>
+                Oké, hier zou ik toch nog even op willen wijzen dat je <b>nooit</b>, maar dan ook <b>nooit</b> je
+                wachtwoorden
+                in plain text mag opslaan in je databank.
+                <br>
+                Wachtwoorden moet je altijd <a href="https://en.wikipedia.org/wiki/Key_derivation_function"
+                    target="_blank">hashen</a> voordat je ze opslaat in je databank.
+            </p>
+            <br>
+            <p><b>
+                    ⚠️ Indien je toch per se je wachtwoorden in plain text wilt opslaan, dan zou ik graag een quote van
+                    Michael
+                    Jordan willen bovenhalen:</b>
+            </p>
+            <img src="./../../assets/memes/getSomeHelp.gif" alt="Michael Jordan">
+            <br>
+
+        </article>
+        <article>
+            <h2>Eindelijk de connectie maken met onze PHP website</h2>
+            <p>
+                Er zijn 2 manieren om een connectie te maken met een databank: MySQLi en PDO.
+            </p>
+            <table>
+                <th colspan="2">
+                    <h2>De verschillen tussen Mysqli en PDO</h2>
+                </th>
+                <tr>
+                    <td>
+                        <h3>Mysqli</h3>
+                        <small>(MySQL Improved)</small>
+                    </td>
+                    <td>
+                        <h3>PDO</h3>
+                        <small>(Php Data Objects)</small>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Je kunt enkel met MySQL databanken verbinden.
+                    </td>
+                    <td>
+                        Je kan met meerdere soorten databanken verbinden.
+                    </td>
+                </tr>
+            </table>
+            <h2>
+                Welke moet ik dan gebruiken?
+            </h2>
+            <p>
+                Zoals meestal in de programmeer wereld is er geen duidelijk antwoord op deze vraag. <br>
+                Het is een kwestie van persoonlijke voorkeur. <br>
+                <br>
+                Wij gaan <b>PDO</b> gebruiken omdat je dan snel je applicatie kan uitbreiden naar andere databanken
+                indien dat nodig is.
+                <br>
+            </p>
+        </article>
+        <article>
+            <h2>Genoeg blabla, laten we beginnen!</h2>
+            <p>
+                Hier zie je hoe je connectie maakt met je databank in PHP.
+            </p>
+            <pre>
+                <div class="button red"></div>
+                <div class="button yellow"></div>
+                <div class="button green"></div>
+            <code class="language-php">
+&lt;?php
+    // Geef hier de gegevens van jouw database in
+    // ⚠️ jouw wachtwoord of gebruikersnaam kan verschillen van dit voorbeeld
+    $host = 'localhost';
+    $dbname = 'my_database';
+    $username = 'root';
+    $password = '';
+
+    
+    try {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password)
+
+        // de volgende regel zorgt ervoor dat PDO de errors laat zien als er iets fout gaat.
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                
+    } catch(PDOException $e) {
+        // Als er iets mis loopt met de connectie, dan laten we een error zien.
+        echo 'Connection failed: ' . $e->getMessage();
+    }
+            </code>
+        </pre>
+
+            <h2>
+                Euh ja? En nu?
+            </h2>
+            <p>
+                Via ons nieuw $pdo object kunnen we nu queries uitvoeren op onze databank.
+            </p>
+            <br>
+
+            <h4>
+                1. Data ophalen uit de databank
+            </h4>
+            <pre>
+                <div class="button red"></div>
+                <div class="button yellow"></div>
+                <div class="button green"></div>
+            <code class="language-php">
+&lt;?php
+    // onze SQL-query
+    $sql = 'SELECT * FROM users';
+
+    // we gebruiken nu ons $pdo-object om de query uit te voeren.
+    $users = $pdo->query($sql);
+
+    // we printen de resultaten van de query
+    while ($user = $users->fetch(PDO::FETCH_ASSOC)) {
+        echo $user['id'] . ' ' . $user['name'] . ' ' . $user['email'] . '';
+    }</code>
+        </pre>
+
+            <p>
+                Proficiat! Je hebt nu je eerste query uitgevoerd op je databank. <br>
+            </p>
+            <br><br>
+            <h4>
+                2. Je wilt nu een gebruiker toevoegen aan je databank.</h4>
+            <p>
+                <br>
+                Let op, als je voor het invoeren van data dezelfde techtniek als hierboven gebruikt ($pdo->query($sql)),
+                dan is jouw website
+                <b>extreem
+                    onveilig</b>.
+            </p>
+            <br>
+            <p>
+                Zonder in detail te gaan kan iemand een <b>SQL injection</b> uitvoeren op jouw website, en bijvoorbeeld
+                allle data
+                uit je databank stelen of zelf verwijderen. ( <a href="
+                https://en.wikipedia.org/wiki/SQL_injection" target="_blank">Lees hier meer over SQL injections</a>)
+            </p>
+            <p>
+                Om dit te voorkomen gebruiken we <b>prepared statements</b>.
+            </p>
+            <br>
+            <h4>
+                Hier een voorbeeld van een prepared statement:
+            </h4>
+            <pre>
+                <div class="button red"></div>
+                <div class="button yellow"></div>
+                <div class="button green"></div>
+            <code class="language-php">
+&lt;?php
+$name = 'John Doe';
+$email = 'johndoe@example.com';
+$password = 'password123';
+
+$stmt = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (?, ?, ?)');
+$stmt->execute([$name, $email, $password]);
+            </code>
+        </pre>
+
+            <h4>Wanneer
+                <b>prepared statements</b> gebruiken, en wanneer niet?
+            </h4>
+
+            <p>
+                Kort antwoord: "Gebruik altijd prepared statements, behalve als de user van je website geen input moest
+                meegeven in de query."
+            </p>
+
+            <h4>
+                Prepared:
+            </h4>
+            <pre>
+                <div class="button red"></div>
+                <div class="button yellow"></div>
+                <div class="button green"></div>
+            <code class="language-php">
+&lt;input type="text" id="name" placeholder="Naam"&gt;
+
+&lt;?php
+
+$name = $_GET['name'];
+
+$stmt = $pdo->prepare('SELECT * FROM users WHERE name = ?');
+$stmt->execute([$name]);</code>
+        </pre>
+
+            <h4>
+                Niet prepared:
+            </h4>
+            <pre>
+                <div class="button red"></div>
+                <div class="button yellow"></div>
+                <div class="button green"></div>
+            <code class="language-php">
+&lt;?php
+
+$stmt = $pdo->prepare('SELECT * FROM users;');
+$stmt->execute();
+            </code>
+        </pre>
+
+        </article>
+        <article>
+            <h3>
+                Proficiat je kunt nu een databank aanmaken en queries uitvoeren! 🎉 🎉 🎉
+            </h3>
+        </article>
+        </section>
+        <div class="btn_flex">
+            <a href="./../../index.html">
+                <button id="btn_back">
+                    <p class="content">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block pijltje " fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                        Alle cursussen
+                    </p>
+                </button>
+            </a>
+        </div>
+    </main>
+    <footer>
+        <div>
+            <div> Made with ❤️ by
+                <a href="https://anthonyaichouche.be" target="_blank">Anthony Aichouche</a>
+                &middot;
+                <a href="mailto:anthony.aichouche@gmail.com">e-mail</a>
+            </div>
+            <div>Licensed under the <a target="_blank"
+                    href="https://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 3.0 license</a>.
+            </div>
+        </div>
+    </footer>
+
+    <a href="#top">
+        <div class="scrollToTop">
+            <p id="percentage__progress">
+                0%
+            </p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+                <path
+                    d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+            </svg>
+        </div>
+    </a>
+</body>
+
+</html>
