@@ -1,1 +1,1 @@
-# gitCursus
+# Devuitleg website
